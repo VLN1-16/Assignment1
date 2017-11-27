@@ -7,23 +7,28 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include "Superhero.h"
 
-#define DEFDATAFILE "datafile.txt"
+#define DEFDATAFILE "datafile.obj"
 class Heros{
     public:        
         Heros();
-        // Initialize Heros with a datafile ( other than default )
+        // Initialize Heros with a datafile
         Heros(std::string Datafile);
-        bool Addahero(Superhero hero);
+        // Addahero, should return a false if adding failed
+        bool Addahero(Superhero* hero);
         friend std::ostream& operator <<(std::ostream &out, Heros& heros);
-        std::vector<Superhero> heros;
+        Superhero* heros; 
     private:
+        // how many heros have we added so far
+        unsigned int size = 2;
+        unsigned int at = 0;
         // Initializes the list, if the Datafile exists. Read from it. Otherwise create it.
-        bool writeIntoDatafile();
         void loadFromDatafile();
+        // Write the updated hero list into text files
+        bool writeIntoDatafile();
         std::string datafile;
+        void resize();
 };
 
 #endif

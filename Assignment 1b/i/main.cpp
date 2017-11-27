@@ -10,11 +10,12 @@ char getinput(){
     cin >> userinput;
     if(userinput == 'l' || userinput == 'n' || userinput == 'q')
         return userinput;
-    cout << "Invalid input!"<< endl << "Please Enter one of the following : " << endl;
+    cout << "Invalid input!"<< endl;
+    cout << "Please Enter one of the following : " << endl;
     return getinput();
 }
 int main(){
-    // Load old heros from file
+    // Load old heros from file, Instance with just the default file
     Heros heros;
     // Interact with the user
     char userinput;
