@@ -1,0 +1,79 @@
+C++ Notes: Reading Text Files
+
+Reading a text file is very easy using an ifstream (input file stream).
+Include the necessary headers.
+#include <fstream>
+using namespace std;
+Declare an input file stream (ifstream) variable. For example,
+ifstream inFile;
+Open the file stream. Path names in MS Windows use backslashes (\). Because the backslash is also the string escape character, it must be doubled. If the full path is not given, most systems will look in the directory that contains the object program. For example,
+inFile.open("C:\\temp\\datafile.txt");
+Check that the file was opened. For example, the open fails if the file doesn't exist, or if it can't be read because another program is writing it. A failure can be detected with code like that below using the ! (logical not) operator:
+if (!inFile) {
+    cerr << "Unable to open file datafile.txt";
+    exit(1);   // call system to stop
+}
+Read from the stream in the same way as cin. For example,
+while (inFile >> x) {
+  sum = sum + x;
+}
+Close the input stream. Closing is essential for output streams to be sure all information has been written to the disk, but is also good practice for input streams to release system resources and make the file available for other programs that might need to write it.
+inFile.close();
+Example
+The following program reads integers from a file and prints their sum.
+  1 
+  2 
+  3 
+  4 
+  5 
+  6 
+  7 
+  8 
+  9 
+ 10 
+ 11 
+ 12 
+ 13 
+ 14 
+ 15 
+ 16 
+ 17 
+ 18 
+ 19 
+ 20 
+ 21 
+ 22 
+ 23 
+ 24 
+ 25 
+ 26 
+ 27 
+// io/read-file-sum.cpp - Read integers from file and print sum.
+// Fred Swartz 2003-08-20
+
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+using namespace std;
+
+int main() {
+    int sum = 0;
+    int x;
+    ifstream inFile;
+    
+    inFile.open("test.txt");
+    if (!inFile) {
+        cout << "Unable to open file";
+        exit(1); // terminate with error
+    }
+    
+    while (inFile >> x) {
+        sum = sum + x;
+    }
+    
+    inFile.close();
+    cout << "Sum = " << sum << endl; 
+    return 0;
+}
+The text from the above example can be selected, copied, and pasted into an editor.
+Copyleft 2000-3 Fred Swartz Last update 2017-11-27, URL=undefined
