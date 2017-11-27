@@ -12,7 +12,7 @@ void readFile(ifstream &file){
     int i = 0;
     string line;
 
-    while(!file.eof() && i < 9){
+    while(!file.eof() && i < 10){
         i++;
         getline(file, line);
         cout << line << endl;
