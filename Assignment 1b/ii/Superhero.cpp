@@ -1,7 +1,7 @@
 #include "Superhero.h"
 #include <iostream>
 Superhero::Superhero(){
-    //name[0] = '\0';
+    name[0] = '\0';
     age = 0;
     superpower = 'n';
 }

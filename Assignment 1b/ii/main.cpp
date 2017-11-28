@@ -25,7 +25,7 @@ Superhero* getahero(){
     cin >> name;
     cout << "How old is the hero: ";
     cin >> age;
-    cout << "What is the heros power (f,g,h): ";
+    cout << "What is the heros power (f,g,h,n): ";
     cin >> power;
     Superhero* hero = new Superhero(name,age,power);
     return hero;

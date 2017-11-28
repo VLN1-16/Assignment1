@@ -12,3 +12,7 @@ clang:
 	clang++ -Wall -c Superhero.cpp main.cpp Heros.cpp -std=c++17
 	clang++ *.o -o Superhero.out
 	rm *.o
+buildwithdebugflags:
+	g++ -Wall -c -g Superhero.cpp main.cpp Heros.cpp
+	g++ *.o -o SuperheroDebug.out
+	rm *.o
