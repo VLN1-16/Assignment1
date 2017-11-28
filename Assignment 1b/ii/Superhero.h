@@ -15,7 +15,7 @@ class Superhero{
         Superhero(char *Name, int Age, char Superpower);
         // overwrite the output stream, Each value is printed in a seperate line
         friend std::ostream& operator <<(std::ostream &out, Superhero& hero);
-        // Print hero information as specified
+        // Print hero information as specified by the project description
         void print(std::ostream &out);
         // input stream is overwritten, each value expected with space
         // as a delimiter, name age power
@@ -23,7 +23,7 @@ class Superhero{
         // convert from a one char power into the true power
         std::string getpower(char power);
     private:
-        //std::string name;
+        // The name is a char field to write it into memory and knowing the size
         char name[100];
         int age;
         char superpower;

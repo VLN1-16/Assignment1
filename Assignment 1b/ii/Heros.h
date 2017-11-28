@@ -22,6 +22,7 @@ class Heros{
     private:
         // how many heros have we added so far
         unsigned int size = 2;
+        // Stand's for index of next element or how many elements are in already
         unsigned int at = 0;
         // Initializes the list, if the Datafile exists. Read from it. Otherwise create it.
         void loadFromDatafile();

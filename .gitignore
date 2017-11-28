@@ -33,3 +33,4 @@
 
 # vim swp files
 *.swp
+datafile.*

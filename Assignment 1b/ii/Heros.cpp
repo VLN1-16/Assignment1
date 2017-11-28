@@ -1,18 +1,25 @@
 #include "Heros.h"
 
 Heros::Heros(std::string Datafile){
-    this->datafile = Datafile;
-    this->heros = new Superhero[size];
-    this->loadFromDatafile();
+    datafile = Datafile;
+    heros = new Superhero[size];
+    loadFromDatafile();
 }
-Heros::Heros() : Heros::Heros(DEFDATAFILE)
-{}
+// Call the other constructor with a default file
+Heros::Heros() : Heros::Heros(DEFDATAFILE) {};
+
 void Heros::loadFromDatafile(){
     std::ifstream fin(datafile, std::ios::binary);
     if(fin.is_open()){
+
+        // find the total size of the file and devide it with the size
+        // Of a single instance if Superhero, than you have the number
+        // of records
         fin.seekg(0,fin.end);
         int records = fin.tellg() / sizeof(Superhero);
         fin.seekg(0,fin.beg);
+        
+        // Read in the binary blob and stick it into an array
         if(records != 0){
             Superhero *data = new Superhero[records*2];
             fin.read((char*) data, sizeof(Superhero) * records);
