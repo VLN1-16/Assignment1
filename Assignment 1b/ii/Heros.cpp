@@ -7,7 +7,11 @@ Heros::Heros(std::string Datafile){
 }
 // Call the other constructor with a default file
 Heros::Heros() : Heros::Heros(DEFDATAFILE) {};
-
+Heros::~Heros(){
+    // Deconstructor, clear alocated heap memory
+    if(heros != NULL)
+        delete [] heros;
+}
 void Heros::loadFromDatafile(){
     std::ifstream fin(datafile, std::ios::binary);
     if(fin.is_open()){
@@ -32,9 +36,9 @@ void Heros::loadFromDatafile(){
     }
 }
 bool Heros::writeIntoDatafile(){
-    int cap = sizeof(Superhero) * at;
-    std::ofstream fout(datafile, std::ios::binary);
-    fout.write((char*)(heros), cap);
+    // Only write a single hero out append it to the end of the binary file
+    std::ofstream fout(datafile, std::ios::binary | std::ios::app);
+    fout.write((char*)(heros + (at - 1)), sizeof(Superhero));
     fout.close();
     return true;
 }
@@ -43,6 +47,7 @@ bool Heros::Addahero(Superhero* hero){
         resize();
     }
     heros[at] = *hero;
+    delete hero;
     at++;
     writeIntoDatafile();
     return true;

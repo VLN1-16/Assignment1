@@ -16,6 +16,7 @@ class Heros{
         // Initialize Heros with a datafile
         Heros(std::string Datafile);
         // Addahero, should return a false if adding failed
+        ~Heros();
         bool Addahero(Superhero* hero);
         friend std::ostream& operator <<(std::ostream &out, Heros& heros);
         Superhero* heros; 
