@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1512038506 source:c:\users\iriso\desktop\skóli\1.2_onn\verklegt námskeið 1\week1_assignment\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<string>
+
